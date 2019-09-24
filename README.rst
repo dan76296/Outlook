@@ -3,13 +3,15 @@ outlook_project
 ===============
 
 
-Add a short description here!
+Python module to Parse through emails and grab relevant information and write to a CSV file.
 
 
 Description
 ===========
 
-A longer description of your project goes here...
+Why?: 
+  - We needed a module that would parse through emails, and pull WiFi sign up details and export them to a CSV for future reference.
+  - The module can grab emails, read them, archive them and write the relevant information to a CSV file.
 
 
 Note

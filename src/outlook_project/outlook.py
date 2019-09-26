@@ -7,6 +7,20 @@ import win32com.client
 import win32com
 
 _logger = logging.getLogger(__name__)
+_logger.setLevel(logging.DEBUG)
+# create file handler which logs even debug messages
+fh = logging.FileHandler('outlook.log')
+fh.setLevel(logging.DEBUG)
+# create console handler with a higher log level
+ch = logging.StreamHandler()
+ch.setLevel(logging.ERROR)
+# create formatter and add it to the handlers
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+fh.setFormatter(formatter)
+ch.setFormatter(formatter)
+# add the handlers to the logger
+_logger.addHandler(fh)
+_logger.addHandler(ch)
 
 class Outlook:
 
@@ -63,10 +77,35 @@ class Outlook:
                 lines_stripped = [line.strip() for line in lines if line != '']
 
                 for item in lines_stripped:
-                    values = item.split(':')
+
+                    if 'MAC Adress' in item:
+                        values = item.split(" ")
+                        values = " ".join(values[:2]), values[2]
+                        
+                    else:
+                        values = item.split(':')
+
                     if len(values) > 1:
-                        results[values[0]] = values[1]
+                        results[values[0]] = values[1].strip(' ')
                 
                 self.data_list.append(results)
                 self.archive_message(message, results)
-            
+
+    def write_data_to_csv(self):
+        with open('wifi_information.csv','a',newline='') as f:
+            writer = csv.writer(f)
+            rows = []
+            for entry in self.data_list:
+
+                login = entry['Login']
+                hotspot_id = entry['Hotspot ID']
+                name = entry['Name']
+                email = entry['Email']
+                how = entry['How did you find us']
+                browser = entry['Browser']
+                mac_address = entry['MAC Adress:']
+
+                row =  [login, hotspot_id, name, email, how, browser, mac_address]
+                rows.append(row)
+                
+            writer.writerows(rows)

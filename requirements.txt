@@ -14,4 +14,10 @@
 # Example:
 # numpy==1.13.3
 # scipy==1.0
-#
+argparse
+csv 
+logging
+os
+sys
+win32com.client
+win32com

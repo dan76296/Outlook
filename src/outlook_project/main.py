@@ -14,21 +14,12 @@ Ol = Outlook()
 
 Ol.connect_outlook()
 Ol.get_accounts()
-Ol.set_variables("Creepy Crawlies WiFi Login Event", "dantestscript12@ol.com")
+Ol.set_variables("Creepy Crawlies WiFi Login Event", "dantestscript12@outlook.com")
 
 for account in Ol.accounts:
     if account.DisplayName == Ol.email_address:
         Ol.get_inbox()
         Ol.set_archive_folder('Archived Wifi')
         Ol.parse_inbox()
+        Ol.write_data_to_csv()
         
-
-# writer.writerow({
-#             #         'login': results['Login'],
-#             #         'hotspot_id': results['Hotspot ID'],
-#             #         'name': results['Name'],
-#             #         'email': results['Email'], 
-#             #         'how': results['How did you find us'],
-#             #         'browser': results['Browser'],
-#             #         'mac': results["MAC Adress"] 
-#             #         })

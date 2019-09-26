@@ -1,0 +1,13 @@
+__initial_setup__
+
+    You will want to open main.py
+    Change line 17 to the email address being used on the machine
+
+    You will want to create a folder on the outlook inbox
+    You can call it anything you want but line 22 must change to match
+    I used 'Archived Wifi'
+    
+    Please note: 
+    Everything in python is Caps Sensitive.
+    Code may need changing depending if the Wifi form changes
+

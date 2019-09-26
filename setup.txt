@@ -6,6 +6,8 @@ __initial_setup__
     You will want to create a folder on the outlook inbox
     You can call it anything you want but line 22 must change to match
     I used 'Archived Wifi'
+
+    To run the program, you will need to install python and then run 'python main.py' whilst in the working directory
     
     Please note: 
     Everything in python is Caps Sensitive.
